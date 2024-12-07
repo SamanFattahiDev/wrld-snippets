@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             Int      @id @default(autoincrement())
+  isDeleted      Boolean  @default(false)
+  username       String
+  email          String   @unique
+  organization   Int?
+  password       String
+  createdAt      DateTime @default(now())
+  inviteLink     String?  @unique
+  referralCounts Int      @default(0)
+}
+
+model Organization {
+  id        Int      @id @default(autoincrement())
+  isDeleted Boolean  @default(false)
+  name      String   @unique
+  picture   String?
+  createdAt DateTime @default(now())
+}
+
+model Snippet {
+  id        Int      @id @default(autoincrement())
+  isDeleted Boolean  @default(false)
+  title     String
+  content   String
+  userId    Int
+  createdAt DateTime @default(now())
+}
+
+model Media {
+  id       Int    @id @default(autoincrement())
+  objectId Int
+  type     Int
+  name     String
+}
