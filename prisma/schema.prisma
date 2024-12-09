@@ -14,15 +14,17 @@ datasource db {
 }
 
 model User {
-  id             Int      @id @default(autoincrement())
-  isDeleted      Boolean  @default(false)
+  id             Int           @id @default(autoincrement())
+  isDeleted      Boolean       @default(false)
   username       String
-  email          String   @unique
-  organization   Int?
+  email          String        @unique
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  organizationId Int?
   password       String
-  createdAt      DateTime @default(now())
-  inviteLink     String?  @unique
-  referralCounts Int      @default(0)
+  createdAt      DateTime      @default(now())
+  inviteLink     String?       @unique
+  referralCounts Int           @default(0)
+  Snippet        Snippet[]
 }
 
 model Organization {
@@ -31,6 +33,7 @@ model Organization {
   name      String   @unique
   picture   String?
   createdAt DateTime @default(now())
+  User      User[]
 }
 
 model Snippet {
@@ -39,6 +42,7 @@ model Snippet {
   title     String
   content   String
   userId    Int
+  user      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
 }
 

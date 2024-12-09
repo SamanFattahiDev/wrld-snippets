@@ -19,7 +19,9 @@ export default defineEventHandler({
                 await prismaClient.user.update({
                     where: {id: +user.id},
                     data: {
-                        organization: organization.id
+                        organization: {
+                            connect: {id: organization.id},
+                        }
                     }
                 })
                 return operation.ok('user append to organization')

@@ -21,7 +21,7 @@ export const userService = {
                 id: user.id,
                 email: user.email,
                 username: user.username,
-                organization: user.organization,
+                organization: user.organizationId,
                 inviteLink: user.inviteLink
             } as IUserGetbyDTO
         } catch (e) {
@@ -38,7 +38,7 @@ export const userService = {
                 id: user.id,
                 email: user.email,
                 username: user.username,
-                organization: user.organization,
+                organization: user.organizationId,
                 inviteLink: user.inviteLink
             } as IUserGetbyDTO
         } catch (e) {

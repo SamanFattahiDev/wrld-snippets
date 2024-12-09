@@ -15,7 +15,7 @@ export default defineEventHandler({
         try {
             const user = await userService.findUserById(+userContext.id);
             if (user.inviteLink)
-                return operation.ok('You Already Have An Invite Link')
+                return operation.ok(`You Already Have An Invite Link`, user.inviteLink)
             const generatedLink = serverUtils.generateLink()
             await prismaClient.user.update({
                 where: {id: userContext.id},

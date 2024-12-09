@@ -21,7 +21,11 @@ export default defineEventHandler({
                     await prismaClient.user.update({
                         where: {id: currentUser.id},
                         data: {
-                            organization: affiliateUserOrganization.id
+                            organization: {
+                                connect: {
+                                    id: affiliateUserOrganization.id
+                                }
+                            }
                         }
                     })
                     return operation.ok(`You Have Successfully Joined ${affiliateUserOrganization.name}`)

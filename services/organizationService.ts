@@ -10,7 +10,7 @@ export const organizationService = {
             return {
                 id: organization.id,
                 name: organization.name,
-                picture:organization.picture
+                picture: organization.picture
             } as IOrganization
         } catch (e) {
             throw e

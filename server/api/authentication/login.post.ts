@@ -29,5 +29,5 @@ export default defineEventHandler(async (event) => {
 
     // Generate JWT
     const token = serverUtils.generateToken({id: user.id, email: user.email});
-    return operation.ok('user created', `Bearer ${token}`);
+    return operation.ok('Authorized', `Bearer ${token}`);
 });
