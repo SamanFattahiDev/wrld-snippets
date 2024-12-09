@@ -84,5 +84,12 @@ export const serverUtils = {
     },
     paginatedQuery(page: number, limit: number): number {
         return (page - 1) * limit
+    },
+    parseWebsocketQueries(queries: string): object {
+        const resultQueries = {}
+        queries.split('&').map((query, idx) => {
+            resultQueries[query.split('=')[0]] = query.split('=')[1]
+        })
+        return resultQueries
     }
 }
