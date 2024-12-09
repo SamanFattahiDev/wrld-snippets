@@ -4,5 +4,5 @@ export default defineNitroConfig({
   experimental: {
     database: true,
     websocket:true
-  }
+  },
 });

@@ -1,9 +1,7 @@
 import {ServiceResult} from "~~/utilities/ServiceResult";
 import {serverUtils} from "~~/utilities/ServerUtils";
 import prismaClient from "~~/utilities/PrismaClient";
-import {mediaService} from "~~/services/media";
-import {mediaTypes} from "~~/models/media";
-import {organizationService} from "~~/services/organizationService";
+import {ws} from "~~/services/ws";
 
 export default defineEventHandler({
     onRequest: [(event) => {
